@@ -30,23 +30,37 @@ public class InterfaceAppl {
         System.out.println(list);
 
 
-        JFrame window = new JFrame("Тест калькулятор");
-        window.setBounds(5, 5, 500, 500);
+        JFrame window = new JFrame("             ДОВІДНИК ЗАСОБІВ ЗАХИСТУ РОСЛИН");
+        window.setBounds(5, 5, 500, 300);
         window.setLayout(null);
+        window.setResizable(false);
+        window.setLocationRelativeTo(null);
         JTextField a_Field = new JTextField();
         JTextField b_Field = new JTextField();
-        a_Field.setBounds(5, 5, 350, 50);
+        a_Field.setBounds(5, 5, 350, 30);
         window.add(a_Field);
         window.add(b_Field);
-        JButton button = new JButton("Інфа");
-        button.setBounds(400, 5, 80, 50);
+        JButton button = new JButton("Інфо по ЗЗР");
+        button.setBounds(360, 5, 120, 30);
         button.setBackground(Color.ORANGE);
         button.setForeground(Color.BLACK);
         window.add(button);
-        JLabel label = new JLabel("ДВ");
-        label.setBounds(5, 200, 450, 200);
+        JLabel label = new JLabel("Діюча речовина");
+        JLabel label1 = new JLabel("Вид ззр");
+        JLabel label2 = new JLabel("Назва препарату");
+
+        label2.setBounds(5, -50, 450, 200);
+        label.setBounds(5, -30, 450, 200);
+        label1.setBounds(5, -10, 450, 200);
+
         label.setBackground(Color.BLACK);
+        label1.setBackground(Color.BLACK);
+        label2.setBackground(Color.BLACK);
+
         window.add(label);
+        window.add(label1);
+        window.add(label2);
+
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,10 +68,16 @@ public class InterfaceAppl {
                 a = a_Field.getText();
                 for (ZZR arrayList : list) {
                     if (arrayList.getName().toUpperCase().contains(a.toUpperCase())) {
+
                         label.setText(arrayList.getDv());
+                        label1.setText(arrayList.getVid());
+                        label2.setText(arrayList.getName());
+
                         break;
                     } else if (!(arrayList.getName().toUpperCase().contains(a.toUpperCase()))) {
-                        label.setText("ЗЗР не знайдено");
+                        label.setText("");
+                        label1.setText("");
+                        label2.setText("ЗЗР не знайдено");
                     }
                 }
             }
