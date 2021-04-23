@@ -24,9 +24,9 @@ public class ApplicitionFirst {
             for (Cell cell : row) {
 
                 DataFormatter format = new DataFormatter();
-                zzr.setName(cell.toString());
 
-                System.out.println(zzr);
+
+                System.out.println(cell);
                 // System.out.println(cell);
 
             }
