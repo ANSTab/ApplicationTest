@@ -30,19 +30,17 @@ public class InterfaceAppl {
         System.out.println(list);
 
 
-        JFrame window = new JFrame("             ДОВІДНИК ЗАСОБІВ ЗАХИСТУ РОСЛИН");
+        JFrame window = new JFrame("ДОВІДНИК ЗАСОБІВ ЗАХИСТУ РОСЛИН");
         window.setBounds(5, 5, 500, 300);
         window.setLayout(null);
         window.setResizable(false);
         window.setLocationRelativeTo(null);
         JTextField a_Field = new JTextField();
-        JTextField b_Field = new JTextField();
         a_Field.setBounds(5, 5, 350, 30);
         window.add(a_Field);
-        window.add(b_Field);
         JButton button = new JButton("Інфо по ЗЗР");
         button.setBounds(360, 5, 120, 30);
-        button.setBackground(Color.ORANGE);
+        button.setBackground(Color.GREEN);
         button.setForeground(Color.BLACK);
         window.add(button);
         JLabel label = new JLabel("Діюча речовина");
@@ -66,25 +64,29 @@ public class InterfaceAppl {
             public void actionPerformed(ActionEvent e) {
                 String a, b;
                 a = a_Field.getText();
+                int counter = 0;
                 for (ZZR arrayList : list) {
+
                     if (arrayList.getName().toUpperCase().contains(a.toUpperCase())) {
+                        counter++;
+
 
                         label.setText(arrayList.getDv());
                         label1.setText(arrayList.getVid());
                         label2.setText(arrayList.getName());
-
                         break;
+
                     } else if (!(arrayList.getName().toUpperCase().contains(a.toUpperCase()))) {
                         label.setText("");
                         label1.setText("");
                         label2.setText("ЗЗР не знайдено");
                     }
                 }
+                System.out.println(counter);
             }
         };
         button.addActionListener(actionListener);
         window.setVisible(true);
-
 
 
     }
