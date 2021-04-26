@@ -46,18 +46,22 @@ public class InterfaceAppl {
         JLabel label = new JLabel("Діюча речовина");
         JLabel label1 = new JLabel("Вид ззр");
         JLabel label2 = new JLabel("Назва препарату");
+        JLabel label100 = new JLabel("v.2.1");
 
-        label2.setBounds(5, -50, 450, 200);
+        label2.setBounds(5, -55, 450, 200);
         label.setBounds(5, -30, 450, 200);
         label1.setBounds(5, -10, 450, 200);
+        label100.setBounds(453, 225, 50, 50);
 
         label.setBackground(Color.BLACK);
         label1.setBackground(Color.BLACK);
         label2.setBackground(Color.BLACK);
+        label100.setBackground(Color.BLACK);
 
         window.add(label);
         window.add(label1);
         window.add(label2);
+        window.add(label100);
 
         ActionListener actionListener = new ActionListener() {
             @Override
@@ -66,28 +70,21 @@ public class InterfaceAppl {
                 a = a_Field.getText();
                 int counter = 0;
                 for (ZZR arrayList : list) {
-
                     if (arrayList.getName().toUpperCase().contains(a.toUpperCase())) {
-                        counter++;
-
-
                         label.setText(arrayList.getDv());
                         label1.setText(arrayList.getVid());
-                        label2.setText(arrayList.getName());
+                        label2.setText(arrayList.getName().toUpperCase());
                         break;
-
                     } else if (!(arrayList.getName().toUpperCase().contains(a.toUpperCase()))) {
                         label.setText("");
                         label1.setText("");
                         label2.setText("ЗЗР не знайдено");
                     }
                 }
-                System.out.println(counter);
             }
         };
         button.addActionListener(actionListener);
         window.setVisible(true);
-
 
     }
 }
