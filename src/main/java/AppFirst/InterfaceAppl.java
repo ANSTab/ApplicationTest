@@ -19,6 +19,7 @@ public class InterfaceAppl {
         ArrayList<ZZR> list = new ArrayList<ZZR>();
 
         BaseJson baseJson = new BaseJson();
+        //читання укр - символів
         String s = String.valueOf(baseJson.deserializatior());
         String s1 = new String(s.getBytes("ISO-8859-1"), "UTF-8");
 
@@ -42,6 +43,7 @@ public class InterfaceAppl {
         button.setBounds(360, 5, 120, 30);
         button.setBackground(Color.GREEN);
         button.setForeground(Color.BLACK);
+        //привязка днопки до ентера
         window.getRootPane().setDefaultButton(button);
         window.getRootPane().getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW)
                 .put(KeyStroke.getKeyStroke("ENTER"), "none");
@@ -49,22 +51,22 @@ public class InterfaceAppl {
                 .put(KeyStroke.getKeyStroke("released ENTER"), "press");
         window.add(button);
 
-        JLabel label = new JLabel("Назва препарату");
-        JLabel label1 = new JLabel("Вид ззр");
-        JLabel label2 = new JLabel("Діюча речовина");
-        JLabel label100 = new JLabel("v.3.0");
-        JLabel label3 = new JLabel("Виробник");
-        JLabel label4 = new JLabel("Норма внесення");
-        JLabel label5 = new JLabel("Культура");
-        JLabel label6 = new JLabel("Спектр шкідливих об*єктів");
+        JLabel label = new JLabel("");//Назва препарату
+        JLabel label1 = new JLabel("");//Вид ззр
+        JLabel label2 = new JLabel("");//Діюча речовина
+        JLabel label100 = new JLabel("v.3.1");
+        JLabel label3 = new JLabel("");//Виробник
+        JLabel label4 = new JLabel("");//Норма внесення
+        JLabel label5 = new JLabel("");//Культура
+        JLabel label6 = new JLabel("");//Спектр шкідливих об*єктів
 
         label.setBounds(5, -50, 450, 200); // назва
         label1.setBounds(5, -30, 450, 200); // вид
         label3.setBounds(5, -10, 450, 200); //Виробник
         label4.setBounds(5, 10, 450, 200); //Норма внесення
-        label5.setBounds(5, 40, 450, 300); //культура
-        label2.setBounds(5, 10, 450, 280); //ДВ
-        label6.setBounds(5, 120, 450, 300); // спектр
+        label5.setBounds(5, 60, 450, 300); //культура
+        label2.setBounds(5, 40, 450, 200); //ДВ
+        label6.setBounds(5, 120, 450, 350); // спектр
 
         label100.setBounds(453, 325, 50, 50);
         Font font = new Font("Arial", Font.BOLD, 12);
@@ -103,6 +105,7 @@ public class InterfaceAppl {
                 a = a_Field.getText();
                 for (ZZR arrayList : list) {
                     if (arrayList.getName().toUpperCase().contains(a.toUpperCase())) {
+                        //обгортка html для переносу тексту
                         label.setText("<html>Назва препарату: " + arrayList.getName().toUpperCase() + "</html>");
                         label2.setText("<html>Діюча речовина: " + arrayList.getDv() + "</html>");
                         label1.setText("<html>Вид ззр: " + arrayList.getVid() + "</html>");
